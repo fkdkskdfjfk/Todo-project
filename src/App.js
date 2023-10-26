@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-  const [] = useState('');
+  const [todos, setTodos] = useState([]);
   
   return (
     <>
