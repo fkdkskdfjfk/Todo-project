@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import reset from "styled-reset";
+import { useState } from 'react';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -11,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-
+  const [] = useState('');
   
   return (
     <>
