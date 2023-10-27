@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import TodoLeftList from './TodoLeftList';
 
 const TodoListItemWrapper = styled.div`
   padding: 1rem;
@@ -41,9 +42,13 @@ const Text = styled.div`
 
 
 function TodoListItem(props) {
+
+
   return (
     <TodoListItemWrapper>
-      
+      {/* <CheckBox>
+
+      </CheckBox> */}
     </TodoListItemWrapper>
   );
 }

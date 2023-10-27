@@ -2,9 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import TodoFrame from './component/TodoFrame';
 import TodoInsert from './component/TodoInsert';
+import { v4 as uuidv4 } from "uuid";
+import TodoLeftList from './component/TodoLeftList';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -15,7 +17,26 @@ const GlobalStyle = createGlobalStyle`
 
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      text: '수업 교안 작성하기',
+      content: 'content1',
+      checked: true
+    },
+    {
+      id: 2,
+      text: '시험 채점하기',
+      content: 'content2',
+      checked: true
+    },
+    {
+      id: 3,
+      text: '단계별 실습 예제 만들기',
+      content: 'content3',
+      checked: false
+    }
+  ]);
 
   // useEffect(() => {
   //   const storageTodos = JSON.parse(localStorage.getItem('todos')) || [];
@@ -26,11 +47,26 @@ function App() {
   //   localStorage.setItem('todos', JSON.stringify(todos));
   // }, [todos]);
   
+  const nextId = useRef(4);
+
+  const handleInsert = (text, content) => {
+    const todo = {
+      id: uuidv4(),
+      text,
+      content,
+      checked: false
+    }
+
+    setTodos(todos.concat(todo));
+    nextId.current += 1;
+  };
+
   return (
     <>
       <GlobalStyle />
       <TodoFrame>
-        <TodoInsert />
+        <TodoInsert onInsert={handleInsert}/>
+        <TodoLeftList todos={todos} />
       </TodoFrame>
 
     </>

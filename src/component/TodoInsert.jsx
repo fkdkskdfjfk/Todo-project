@@ -39,7 +39,7 @@ const StyledButton = styled.button`
   }
 `;
 
-function TodoInsert(props) {
+function TodoInsert({ onInsert }) {
   const [modal, setModal] = useState(false);
 
   const showModal = () => {
@@ -55,7 +55,7 @@ function TodoInsert(props) {
     <TodoInsertWrapper onSubmit={handleSubmit}>
       <StyledButton>
         <MdPostAdd onClick={showModal} />
-        {modal && <InsertModal setModal={setModal} /> }
+        {modal && <InsertModal onInsert={onInsert} setModal={setModal} /> }
       </StyledButton>
     </TodoInsertWrapper>
   );

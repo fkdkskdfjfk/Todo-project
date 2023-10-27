@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import TodoListItem from './TodoListItem';
 
 const TodoLeftListWrapper = styled.div`
   min-height: 600px;
@@ -8,9 +9,13 @@ const TodoLeftListWrapper = styled.div`
 `;
 
 function TodoLeftList(props) {
+  const { todos } = props;
+  console.log(todos);
+  console.log(todos[0]);
+
   return (
     <TodoLeftListWrapper>
-      왼쪽
+      {todos.map(todo => <TodoListItem key={todo.id} todo={todo} />)}
     </TodoLeftListWrapper>
   );
 }

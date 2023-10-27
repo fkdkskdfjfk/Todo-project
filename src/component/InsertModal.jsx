@@ -8,28 +8,35 @@ const InsertModalWrapper = styled.div`
   padding: 10px;
   background: #22b8cf;
   z-index: 99;
-  position: absolute;
+  position: fixed;
   top: 25%;
   left: 25%;
   text-align: center;
   cursor: default;
+  flex-direction: column;
 
-  .registButton {
+  .registButton, .closeButton {
+    width: 5rem;
+    height: 2rem;
     position: absolute;
     outline: none;
-    right: 20%;
+    border: none;
+  
+    cursor: pointer;
+  }
+  .registButton {
+    right: 25%;
     bottom: 5%;
   }
-
   .closeButton {
-    position: absolute;
-    outline: none;
     right: 5%;
     bottom: 5%;
   }
 `;
 
 const StyledInput = styled.input`
+  width: 70%;
+  margin-top: 40px;
   background: white;
   outline: none;
   border: none;
@@ -39,46 +46,81 @@ const StyledInput = styled.input`
   
 
   &::placeholder {
-    color: #dee2e6;
+    color: #deeee6;
   }
 `;
 
 const StyledTextarea = styled.textarea`
+  width: 70%;
+  height: 40%;
+  margin-top: 30px;
   background: white;
   outline: none;
   border: none;
   padding: 0.5rem;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.5;
-  color: white;
+  resize: none;
+  flex: 1;
+
+  /* position: absolute; */
+
+  &::placeholder {
+    color: #deeee6;
+  }
 `;
 
 // 함수
 function InsertModal(props) {
-  const [value, setValue] = useState('');
+  const [text, setText] = useState('');
+  const [content, setContent] = useState('');
 
-  const handleChange = (e) => {
-    setValue(e.target.value)
+
+  const handleChangeText = (e) => {
+    setText(e.target.value)
+  };
+  
+  const handleChangeContent = (e) => {
+    setText(e.target.value)
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // closeModal();
+    props.onInsert(text, content);
+    closeModal();
   };
 
   const closeModal = () => {
     props.setModal(false);
   };
 
+  const today = new Date();
+
+  const dday = (year, month, day) => {
+    const endDate = new Date(year, month-1, day);
+    const diffDate = endDate.getTime() - today.getTime();
+    return Math.ceil(diffDate / (1000*60*60*24));
+  };
+
   return (
-    <InsertModalWrapper>
+    <InsertModalWrapper onSubmit={handleSubmit}>
+      <div>할 일 추가</div>
       <StyledInput 
-        text='text'
+        type='text'
         placeholder='제목'
-        value={value}
-        onChange={handleChange}
+        value={text}
+        onChange={handleChangeText}
       />
-      <button className='registButton' onClick={undefined}>
+      <StyledTextarea
+        placeholder='내용을 입력하세요'
+        value={content}
+        onChange={handleChangeContent}
+      />
+      <div>
+        
+      </div>
+      <button className='registButton' type="submit">
         등록
       </button>
       <button className='closeButton' onClick={closeModal}>
