@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TodoRightUpperListWrapper = styled.div`
-  min-height: 160px;
-  max-height: 300px;
+  min-height: 300px;
+  /* max-height: 300px; */
   overflow-y: auto;
+  background: gray;
 `;
 
 function TodoRightUpperList(props) {
