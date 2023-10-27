@@ -1,8 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import { useState } from 'react';
-
+import TodoFrame from './component/TodoFrame';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -16,7 +17,11 @@ function App() {
   
   return (
     <>
-    
+      <GlobalStyle />
+      <TodoFrame>
+      
+      </TodoFrame>
+
     </>
   );
 }
