@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import TodoLeftList from './TodoLeftList';
+import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 
 const TodoListItemWrapper = styled.div`
   padding: 1rem;
@@ -42,13 +43,15 @@ const Text = styled.div`
 
 
 function TodoListItem(props) {
-
+  const { todo: {id, text, content, checked} } = props;
 
   return (
     <TodoListItemWrapper>
-      {/* <CheckBox>
-
-      </CheckBox> */}
+      <CheckBox checked={checked} >
+        { checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank /> }
+      </CheckBox>
+      <Text checked={checked}>{text}</Text>
+      
     </TodoListItemWrapper>
   );
 }

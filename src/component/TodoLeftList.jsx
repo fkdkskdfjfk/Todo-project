@@ -10,12 +10,12 @@ const TodoLeftListWrapper = styled.div`
 
 function TodoLeftList(props) {
   const { todos } = props;
-  console.log(todos);
-  console.log(todos[0]);
+  // console.log(todos);
+  // console.log(todos[0]);
 
   return (
     <TodoLeftListWrapper>
-      {todos.map(todo => <TodoListItem key={todo.id} todo={todo} />)}
+      {todos && todos.map(todo => <TodoListItem key={todo.id} todo={todo} />)}
     </TodoLeftListWrapper>
   );
 }

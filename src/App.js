@@ -64,9 +64,9 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <TodoFrame>
+      <TodoFrame todos={todos} >
         <TodoInsert onInsert={handleInsert}/>
-        <TodoLeftList todos={todos} />
+
       </TodoFrame>
 
     </>

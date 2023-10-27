@@ -9,6 +9,7 @@ const TodoFrameWrapper = styled.div`
   margin-top: 6rem;
   border-radius: 10px;
   overflow: hidden;
+  /* position: relative; */
 
   .title {
     height: 4rem;
@@ -19,10 +20,11 @@ const TodoFrameWrapper = styled.div`
   }
   
   .contentFunc {
-    /* height: 3rem; */
+    /* height: 56px; */
     display: flex;
     justify-content: center;
     align-items: center;
+    /* position: relative; */
   }
   
   .inputTodo {
@@ -46,7 +48,7 @@ const TodoFrameWrapper = styled.div`
 `;
 
 function TodoFrame(props) {
-  const { children } = props;
+  const { todos, children } = props;
 
   return (
     <TodoFrameWrapper>
@@ -57,7 +59,7 @@ function TodoFrame(props) {
       </div>
       <div className='content'>
         <div className='leftContent'>
-          <TodoLeftList />
+          <TodoLeftList todos={todos}/>
         </div>
 
         <div className='rightContent'>

@@ -8,9 +8,10 @@ const InsertModalWrapper = styled.div`
   padding: 10px;
   background: #22b8cf;
   z-index: 99;
-  position: fixed;
-  top: 25%;
-  left: 25%;
+  position: absolute;
+  /* top: 50%;
+  right: 0%; */
+  
   text-align: center;
   cursor: default;
   flex-direction: column;
@@ -81,7 +82,7 @@ function InsertModal(props) {
   };
   
   const handleChangeContent = (e) => {
-    setText(e.target.value)
+    setContent(e.target.value)
   };
 
   const handleSubmit = (e) => {

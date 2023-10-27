@@ -4,8 +4,10 @@ import { MdAdd, MdPostAdd } from "react-icons/md";
 import InsertModal from './InsertModal';
 
 const TodoInsertWrapper = styled.form`
+  height: 56px;
   display: flex;
   background: #495057;
+  /* position: relative; */
 `;
 
 const StyledInput = styled.input`
@@ -32,6 +34,7 @@ const StyledButton = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
+  
   transition: 0.2s background;
 
   &:hover {
@@ -53,10 +56,10 @@ function TodoInsert({ onInsert }) {
   
   return (
     <TodoInsertWrapper onSubmit={handleSubmit}>
-      <StyledButton>
-        <MdPostAdd onClick={showModal} />
-        {modal && <InsertModal onInsert={onInsert} setModal={setModal} /> }
+      <StyledButton onClick={showModal}>
+        <MdPostAdd  />
       </StyledButton>
+      {modal && <InsertModal onInsert={onInsert} setModal={setModal} /> }
     </TodoInsertWrapper>
   );
 }
