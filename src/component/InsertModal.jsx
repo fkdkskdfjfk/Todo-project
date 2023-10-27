@@ -64,8 +64,6 @@ const StyledTextarea = styled.textarea`
   resize: none;
   flex: 1;
 
-  /* position: absolute; */
-
   &::placeholder {
     color: #deeee6;
   }
@@ -87,9 +85,16 @@ function InsertModal(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // closeModal();
+    
+    if (!text || !content) { 
+      alert('무엇을 할 지 내용을 입력하세요!');
+      return; 
+    }
+
     props.onInsert(text, content);
     closeModal();
+    setText(text);
+    // setContent(content);
   };
 
   const closeModal = () => {
@@ -105,7 +110,7 @@ function InsertModal(props) {
   };
 
   return (
-    <InsertModalWrapper onSubmit={handleSubmit}>
+    <InsertModalWrapper>
       <div>할 일 추가</div>
       <StyledInput 
         type='text'
@@ -121,7 +126,7 @@ function InsertModal(props) {
       <div>
         
       </div>
-      <button className='registButton' type="submit">
+      <button className='registButton' type="submit" onClick={handleSubmit}>
         등록
       </button>
       <button className='closeButton' onClick={closeModal}>
