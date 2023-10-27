@@ -19,7 +19,7 @@ const TodoFrameWrapper = styled.div`
   }
   
   .contentFunc {
-    height: 3rem;
+    /* height: 3rem; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +30,7 @@ const TodoFrameWrapper = styled.div`
   }
   
   .content {
-    display: flex;    
+    display: flex;
   }
 
   .leftContent {
@@ -53,7 +53,7 @@ function TodoFrame(props) {
       <div className='title'>일정 관리</div>
       <div className='contentFunc'>기능들,
       
-        <div className='inputTodo'>입력창{children}</div>
+        <div className='inputTodo'>{children}</div>
       </div>
       <div className='content'>
         <div className='leftContent'>

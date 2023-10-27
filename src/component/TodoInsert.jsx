@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import { MdAdd, MdPostAdd } from "react-icons/md";
+import InsertModal from './InsertModal';
 
 const TodoInsertWrapper = styled.form`
   display: flex;
@@ -39,26 +40,23 @@ const StyledButton = styled.button`
 `;
 
 function TodoInsert(props) {
-  const [value, setValue] = useState('');
+  const [modal, setModal] = useState(false);
 
-  const handleChange = (e) => {
-    setValue(e.target.value)
+  const showModal = () => {
+    setModal(true);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!value) {
-      alert('무엇을 할 지 내용을 입력하세요!');
-      return; 
-    }
-    onInsert(value);
-    setValue('');
   };
   
   return (
     <TodoInsertWrapper onSubmit={handleSubmit}>
-
+      <StyledButton>
+        <MdPostAdd onClick={showModal} />
+        {modal && <InsertModal setModal={setModal} /> }
+      </StyledButton>
     </TodoInsertWrapper>
   );
 }

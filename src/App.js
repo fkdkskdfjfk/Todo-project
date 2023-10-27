@@ -4,6 +4,7 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import { useEffect, useState } from 'react';
 import TodoFrame from './component/TodoFrame';
+import TodoInsert from './component/TodoInsert';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -29,7 +30,7 @@ function App() {
     <>
       <GlobalStyle />
       <TodoFrame>
-      
+        <TodoInsert />
       </TodoFrame>
 
     </>
