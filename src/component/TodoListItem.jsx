@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import TodoLeftList from './TodoLeftList';
-import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
+import { MdCheckBox, MdCheckBoxOutlineBlank, MdRemoveCircleOutline } from "react-icons/md";
+import { HiPencil } from "react-icons/hi2";
 
 const TodoListItemWrapper = styled.div`
   padding: 1rem;
@@ -39,19 +39,47 @@ const Text = styled.div`
   }
 `;
 
-// const Remove
+const Amend = styled.div`
+  display: flex;
+  align-items: center;
+  padding-right: 7px;
+  font-size: 1.3rem;
+  color: #ff6b6b;
+  cursor: pointer;
+
+  &:hover {
+    color: #ff8787;
+  }
+`;
+
+const Remove = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #ff6b6b;
+  cursor: pointer;
+
+  &:hover {
+    color: #ff8787;
+  }
+`;
 
 
 function TodoListItem(props) {
-  const { todo: {id, text, content, checked} } = props;
-
+  const { todo: {id, text, content, checked}, onRemove, onToggle, onView } = props;
+  // console.log(onToggle);
   return (
     <TodoListItemWrapper>
-      <CheckBox checked={checked} >
+      <CheckBox checked={checked} onClick={() => {onToggle(id)}}>
         { checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank /> }
       </CheckBox>
       <Text checked={checked}>{text}</Text>
-      
+      <Amend onClick={() => { onView(id); }}>
+        <HiPencil />
+      </Amend>
+      <Remove onClick={() => { onRemove(id); }}>
+        <MdRemoveCircleOutline />
+      </Remove>
     </TodoListItemWrapper>
   );
 }

@@ -9,13 +9,13 @@ const TodoLeftListWrapper = styled.div`
 `;
 
 function TodoLeftList(props) {
-  const { todos } = props;
+  const { todos, onRemove, onToggle, onView } = props;
   // console.log(todos);
   // console.log(todos[0]);
 
   return (
     <TodoLeftListWrapper>
-      {todos && todos.map(todo => <TodoListItem key={todo.id} todo={todo} />)}
+      {todos && todos.map(todo => <TodoListItem key={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle} onView={onView}/>)}
     </TodoLeftListWrapper>
   );
 }

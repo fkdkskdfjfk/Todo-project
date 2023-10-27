@@ -18,36 +18,37 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [todos, setTodos] = useState([
-    {
-      id: 1,
-      text: '수업 교안 작성하기',
-      content: 'content1',
-      checked: true
-    },
-    {
-      id: 2,
-      text: '시험 채점하기',
-      content: 'content2',
-      checked: true
-    },
-    {
-      id: 3,
-      text: '단계별 실습 예제 만들기',
-      content: 'content3',
-      checked: false
-    }
+    // {
+    //   id: 1,
+    //   text: '수업 교안 작성하기',
+    //   content: 'content1',
+    //   checked: true
+    // },
+    // {
+    //   id: 2,
+    //   text: '시험 채점하기',
+    //   content: 'content2',
+    //   checked: true
+    // },
+    // {
+    //   id: 3,
+    //   text: '단계별 실습 예제 만들기',
+    //   content: 'content3',
+    //   checked: false
+    // }
   ]);
+  const [rightTodos, setRightTodos] = useState('');
 
-  // useEffect(() => {
-  //   const storageTodos = JSON.parse(localStorage.getItem('todos')) || [];
-  //   setTodos(storageTodos);
-  // }, []);
+  useEffect(() => {
+    const storageTodos = JSON.parse(localStorage.getItem('todos')) || [];
+    setTodos(storageTodos);
+  }, []);
   
-  // useEffect(() => {
-  //   localStorage.setItem('todos', JSON.stringify(todos));
-  // }, [todos]);
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
   
-  const nextId = useRef(4);
+  const nextId = useRef(1);
 
   const handleInsert = (text, content) => {
     const todo = {
@@ -61,10 +62,29 @@ function App() {
     nextId.current += 1;
   };
 
+  const handleRemove = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
+  const handleToggle = (id) => {
+    setTodos(todos.map(todo => todo.id === id ? { ...todo, checked: !todo.checked } : todo));
+  };
+
+  const handleView = (id) => {
+    setRightTodos(todos.filter(todo => todo.id === id));
+  };
+
+  const handleAmend = (id, text, content) => {
+    setTodos(todos.map(todo => todo.id === id ? { ...todo, text, content } : todo));
+  };
+
   return (
     <>
       <GlobalStyle />
-      <TodoFrame todos={todos} >
+      <TodoFrame todos={todos} onRemove={handleRemove} onToggle={handleToggle} 
+        onView={handleView} onAmend={handleAmend} onInsert={handleInsert}
+        rightTodos={rightTodos}
+      >
         <TodoInsert onInsert={handleInsert}/>
 
       </TodoFrame>

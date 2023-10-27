@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import TodoLeftList from './TodoLeftList';
-import TodoRightList from './TodoRightList';
+import TodoRightUpperList from './TodoRightUpperList';
 
 const TodoFrameWrapper = styled.div`
   width: 768px;
@@ -36,7 +36,7 @@ const TodoFrameWrapper = styled.div`
   }
 
   .leftContent {
-    background: lightcoral;
+    background: #d1acac;
     width: 50%;
   }
 
@@ -48,7 +48,7 @@ const TodoFrameWrapper = styled.div`
 `;
 
 function TodoFrame(props) {
-  const { todos, children } = props;
+  const { todos, onRemove, onToggle, onView, onAmend, onInsert, rightTodos, children } = props;
 
   return (
     <TodoFrameWrapper>
@@ -59,11 +59,11 @@ function TodoFrame(props) {
       </div>
       <div className='content'>
         <div className='leftContent'>
-          <TodoLeftList todos={todos}/>
+          <TodoLeftList todos={todos} onRemove={onRemove} onToggle={onToggle} onView={onView}/>
         </div>
 
         <div className='rightContent'>
-          <TodoRightList />
+          <TodoRightUpperList rightTodos={rightTodos} todos={todos} onAmend={onAmend} onInsert={onInsert}/>
         </div>
       </div>   
     </TodoFrameWrapper>
