@@ -13,7 +13,7 @@ const TodoFrameWrapper = styled.div`
 
   .title {
     height: 4rem;
-    background: blue;
+    background: #22b8cf;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,20 +36,21 @@ const TodoFrameWrapper = styled.div`
   }
 
   .leftContent {
-    background: #d1acac;
+    background: #cab7b7;
     width: 50%;
   }
 
   .rightContent {
-    background: lightgreen;
+    background: #cab7b7;
     width: 50%;
-
+    border-left: 1px solid gray;
   }
 `;
 
 function TodoFrame(props) {
-  const { todos, onRemove, onToggle, onView, onAmend, onInsert, rightTodos, children } = props;
-
+  const { todos, onRemove, onToggle, onView, onAmend, rightTodos, children } = props;
+  // const title = rightTodos[0].text;
+  // console.log(title);
   return (
     <TodoFrameWrapper>
       <div className='title'>일정 관리</div>
@@ -63,7 +64,7 @@ function TodoFrame(props) {
         </div>
 
         <div className='rightContent'>
-          <TodoRightUpperList rightTodos={rightTodos} todos={todos} onAmend={onAmend} onInsert={onInsert}/>
+          <TodoRightUpperList rightTodos={rightTodos} onAmend={onAmend} />
         </div>
       </div>   
     </TodoFrameWrapper>

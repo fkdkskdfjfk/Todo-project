@@ -82,7 +82,7 @@ function App() {
     <>
       <GlobalStyle />
       <TodoFrame todos={todos} onRemove={handleRemove} onToggle={handleToggle} 
-        onView={handleView} onAmend={handleAmend} onInsert={handleInsert}
+        onView={handleView} onAmend={handleAmend}
         rightTodos={rightTodos}
       >
         <TodoInsert onInsert={handleInsert}/>

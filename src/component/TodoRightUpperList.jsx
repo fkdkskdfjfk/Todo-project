@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const TodoRightUpperListWrapper = styled.div`
+const TodoRightUpperListWrapper = styled.form`
   min-height: 300px;
   /* max-height: 300px; */
   overflow-y: auto;
-  background: green;
-  
+  border-bottom: 1px solid gray;
 
   .upperDiv {
     border-bottom: 1px solid #dee2e6;
-    background: yellow;
+    background: #929291;
     
     padding: 14px;
     display: flex;
@@ -19,12 +18,14 @@ const TodoRightUpperListWrapper = styled.div`
 
   .lowerDiv {
     padding: 1rem;
-    /* background: green; */
     position: relative;
 
     .amendButton {
       width: 3rem;
+      border-radius: 5px;
       position: absolute;
+      outline: none;
+      background: transparent;
       right: 10%;
       bottom: -40%;
     }
@@ -56,10 +57,14 @@ const StyledTextarea = styled.textarea`
 `;
 
 function TodoRightUpperList(props) {
-  const { rightTodos, todos, onInsert, onAmend } = props;
+  const { rightTodos, onAmend } = props;
   const [amendText, setAmendText] = useState('');
   const [amendContent, setAmendContent] = useState('');
 
+  useEffect(() => {
+    setAmendText(amendText => rightTodos && rightTodos[0].text);
+    setAmendContent(rightTodos && rightTodos[0].content);
+  }, [ rightTodos ]);
 
   const handleChangeText = (e) => {
     setAmendText(e.target.value)
@@ -68,38 +73,29 @@ function TodoRightUpperList(props) {
   const handleChangeContent = (e) => {
     setAmendContent(e.target.value)
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    onInsert(amendText, amendContent);
-    // setAmendText('');
-    setAmendText(amendText);
-    
-    // setAmendContent(amendContent);
-  };
   
   return (
     <TodoRightUpperListWrapper>
       <div className='upperDiv'>
-        {/* {rightTodos && rightTodos[0].text} */}
         <StyledInput 
-          // value={amendText}
-          defaultValue={rightTodos && rightTodos[0].text} 
+          type='text'
+          value={amendText}
           onChange={handleChangeText} 
         />
       </div>
       <div className='lowerDiv'>
-        {/* {rightTodos && rightTodos[0].content} */}
         <StyledTextarea
-          // value={amendContent}
-          defaultValue={rightTodos && rightTodos[0].content} 
+          value={amendContent} 
           onChange={handleChangeContent}
         />
-        <button className='amendButton' type="submit" onClick={() => {
-          onAmend(rightTodos[0].id, amendText, amendContent)}}>
+        {rightTodos && (<button className='amendButton' type="submit" onClick={(e) => {
+          e.preventDefault();
+          onAmend(rightTodos[0].id, amendText, amendContent)
+          setAmendText('');
+          setAmendContent('');
+        }}>
         수정
-        </button>
+        </button>)}
       </div>
     </TodoRightUpperListWrapper>
   );
