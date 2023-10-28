@@ -6,6 +6,8 @@ import InsertModal from './InsertModal';
 const TodoInsertWrapper = styled.form`
   height: 56px;
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
   background: #495057;
   /* position: relative; */
 `;

@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { MdClose } from 'react-icons/md';
 import styled from 'styled-components';
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import { FcCalendar } from "react-icons/fc";
 
 const InsertModalWrapper = styled.div`
   width: 500px;
   height: 500px;
   padding: 10px;
   border-radius: 10px;
-  background: #22b8cf;
+  background: #54a1ad;
   z-index: 99;
   position: absolute;
-  /* top: 50%;
-  right: 0%; */
-  
   text-align: center;
+  /* margin: 0 auto; */
   cursor: default;
-  flex-direction: column;
 
   .registButton, .closeButton {
     width: 5rem;
@@ -23,7 +23,6 @@ const InsertModalWrapper = styled.div`
     position: absolute;
     outline: none;
     border: none;
-  
     cursor: pointer;
   }
   .registButton {
@@ -46,7 +45,6 @@ const StyledInput = styled.input`
   font-size: 1rem;
   line-height: 1.5;
   
-
   &::placeholder {
     color: #deeee6;
   }
@@ -70,11 +68,33 @@ const StyledTextarea = styled.textarea`
   }
 `;
 
+const StyledCalendar = styled.div`
+  width: 70%;
+  margin-top: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: start;
+  /* padding: 0.5rem; */
+  padding-left: 5rem;
+  /* display: flex; */
+  position: relative;
+  z-index: 999;
+
+  .calendar {
+    font-size: 25px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+
 // 함수
 function InsertModal(props) {
   const [text, setText] = useState('');
   const [content, setContent] = useState('');
-
+  const [dday, onChange] = useState(new Date());
+  const [onCalendar, setOnCalendar] = useState(false);
 
   const handleChangeText = (e) => {
     setText(e.target.value)
@@ -102,6 +122,7 @@ function InsertModal(props) {
     props.setModal(false);
   };
 
+  
   return (
     <InsertModalWrapper>
       <div>할 일 추가</div>
@@ -116,9 +137,18 @@ function InsertModal(props) {
         value={content}
         onChange={handleChangeContent}
       />
-      <div>
-        
-      </div>
+      <StyledCalendar>
+        D-day: <FcCalendar className='calendar' onClick={() => {setOnCalendar(true)}}/>
+        {onCalendar && <Calendar onChange={onChange} value={dday} onClickDay={() => {setOnCalendar(false)}} />}
+        <h3>
+          {new Date(dday).toLocaleDateString("ko", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })}
+        </h3>
+        {console.log(dday)}
+      </StyledCalendar>
       <button className='registButton' type="submit" onClick={handleSubmit}>
         등록
       </button>

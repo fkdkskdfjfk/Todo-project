@@ -65,26 +65,13 @@ function TodoFrame(props) {
 
   const [time, setTime] = useState(new Date());
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-    return (() => clearInterval(id))
-  }, []);
-
-  // const Dday = (year, month, day) => {
-  //   const endDate = new Date(year, month-1, day);
-  //   const diffDate = endDate.getTime() - Today.getTime();
-  //   return Math.ceil(diffDate / (1000*60*60*24));
-  // };
-
   return (
     <TodoFrameWrapper>
-      <div className='title'>일정 관리</div>
+      <div className='title'>일정 관리 앱</div>
       <div className='contentFunc'>
         <div className='styledDate'>
-          {time.toLocaleDateString()}
-          {time.toLocaleTimeString()}
+          {'오늘 날짜: '+time.toLocaleDateString()}
+          {console.log(time.getTime())}
         </div>
         <div className='inputTodo'>{children}</div>
       </div>
