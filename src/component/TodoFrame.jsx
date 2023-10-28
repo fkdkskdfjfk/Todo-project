@@ -54,7 +54,7 @@ function TodoFrame(props) {
   return (
     <TodoFrameWrapper>
       <div className='title'>일정 관리</div>
-      <div className='contentFunc'>기능들,
+      <div className='contentFunc'>
       
         <div className='inputTodo'>{children}</div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const TodoRightUpperListWrapper = styled.form`
+const TodoRightUpperListWrapper = styled.div`
   min-height: 300px;
   /* max-height: 300px; */
   overflow-y: auto;
@@ -63,6 +63,7 @@ function TodoRightUpperList(props) {
 
   useEffect(() => {
     setAmendText(amendText => rightTodos && rightTodos[0].text);
+    setAmendText(amendText => amendText);
     setAmendContent(rightTodos && rightTodos[0].content);
   }, [ rightTodos ]);
 
@@ -88,7 +89,7 @@ function TodoRightUpperList(props) {
           value={amendContent} 
           onChange={handleChangeContent}
         />
-        {rightTodos && (<button className='amendButton' type="submit" onClick={(e) => {
+        {amendText && (<button className='amendButton' type="button" onClick={(e) => {
           e.preventDefault();
           onAmend(rightTodos[0].id, amendText, amendContent)
           setAmendText('');
