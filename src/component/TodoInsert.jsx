@@ -10,19 +10,25 @@ const TodoInsertWrapper = styled.form`
   /* position: relative; */
 `;
 
-const StyledInput = styled.input`
-  background: none;
-  outline: none;
-  border: none;
-  padding: 0.5rem;
-  font-size: 1.125rem;
-  line-height: 1.5;
-  color: white;
-  flex: 1;
+// const StyledInput = styled.input`
+//   background: none;
+//   outline: none;
+//   border: none;
+//   padding: 0.5rem;
+//   font-size: 1.125rem;
+//   line-height: 1.5;
+//   color: white;
+//   flex: 1;
 
-  &::placeholder {
-    color: #dee2e6;
-  }
+//   &::placeholder {
+//     color: #dee2e6;
+//   }
+// `;
+
+const StyledDate = styled.div`
+  background: #788a9b;
+  /* display: flex;
+  flex: 1; */
 `;
 
 const StyledButton = styled.button`
@@ -51,7 +57,6 @@ function TodoInsert({ onInsert }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
   };
   
   return (

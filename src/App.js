@@ -1,12 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import { useEffect, useRef, useState } from 'react';
 import TodoFrame from './component/TodoFrame';
 import TodoInsert from './component/TodoInsert';
 import { v4 as uuidv4 } from "uuid";
-import TodoLeftList from './component/TodoLeftList';
+
 
 const GlobalStyle = createGlobalStyle`
   ${reset}

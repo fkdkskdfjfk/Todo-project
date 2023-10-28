@@ -6,6 +6,7 @@ const InsertModalWrapper = styled.div`
   width: 500px;
   height: 500px;
   padding: 10px;
+  border-radius: 10px;
   background: #22b8cf;
   z-index: 99;
   position: absolute;
@@ -99,14 +100,6 @@ function InsertModal(props) {
 
   const closeModal = () => {
     props.setModal(false);
-  };
-
-  const today = new Date();
-
-  const dday = (year, month, day) => {
-    const endDate = new Date(year, month-1, day);
-    const diffDate = endDate.getTime() - today.getTime();
-    return Math.ceil(diffDate / (1000*60*60*24));
   };
 
   return (
