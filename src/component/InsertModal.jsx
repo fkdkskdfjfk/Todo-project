@@ -112,10 +112,11 @@ function InsertModal(props) {
       return; 
     }
 
-    props.onInsert(text, content);
+    props.onInsert(text, content, dday.getTime());
     closeModal();
     setText(text);
     // setContent(content);
+    
   };
 
   const closeModal = () => {
@@ -147,7 +148,7 @@ function InsertModal(props) {
             day: "numeric",
           })}
         </h3>
-        {console.log(dday)}
+        {console.log(dday.getTime())}
       </StyledCalendar>
       <button className='registButton' type="submit" onClick={handleSubmit}>
         등록

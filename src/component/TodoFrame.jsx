@@ -62,7 +62,6 @@ const TodoFrameWrapper = styled.div`
 
 function TodoFrame(props) {
   const { todos, onRemove, onToggle, onView, onAmend, rightTodos, children } = props;
-
   const [time, setTime] = useState(new Date());
 
   return (

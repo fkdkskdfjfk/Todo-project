@@ -36,7 +36,6 @@ const StyledInput = styled.input`
   background: none;
   outline: none;
   border: none;
-  /* padding: 0.5rem; */
   font-size: 1.125rem;
   line-height: 1.5;
   flex: 1;
@@ -45,7 +44,7 @@ const StyledInput = styled.input`
 
 const StyledTextarea = styled.textarea`
   width: 100%;
-  height: 100px;
+  height: 80px;
   background: transparent;
   outline: none;
   border: none;
@@ -53,6 +52,15 @@ const StyledTextarea = styled.textarea`
   font-size: 1rem;
   line-height: 1.5;
   resize: none;
+  flex: 1;
+`;
+
+const StyledTime = styled.div`
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 1.125rem;
+  line-height: 1.5;
   flex: 1;
 `;
 
@@ -89,6 +97,9 @@ function TodoRightUpperList(props) {
           value={amendContent} 
           onChange={handleChangeContent}
         />
+        <StyledTime>
+          {'D-day: ' + rightTodos[0].dayTime}
+        </StyledTime>
         {amendText && (<button className='amendButton' type="button" onClick={(e) => {
           e.preventDefault();
           onAmend(rightTodos[0].id, amendText, amendContent)

@@ -48,12 +48,13 @@ function App() {
   
   const nextId = useRef(1);
 
-  const handleInsert = (text, content) => {
+  const handleInsert = (text, content, dayTime) => {
     const todo = {
       id: uuidv4(),
       text,
       content,
-      checked: false
+      checked: false,
+      dayTime
     }
 
     setTodos(todos.concat(todo));
