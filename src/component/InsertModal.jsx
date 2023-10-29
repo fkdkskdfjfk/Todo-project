@@ -108,11 +108,17 @@ function InsertModal(props) {
     e.preventDefault();
     
     if (!text || !content) { 
-      alert('무엇을 할 지 내용을 입력하세요!');
+      alert('무엇을 할 지 내용, D-Day를 입력하세요!');
       return; 
     }
-
-    props.onInsert(text, content, dday.getTime());
+    
+    const today = new Date();
+    const diffTime = dday.getTime() - today.getTime();
+    const diffTimeAbs = Math.abs(dday.getTime() - today.getTime());
+    const ddayValue = Math.ceil(diffTimeAbs / (1000*60*60*24));
+    const ddayLast = (diffTime < 0) ? '+'+ddayValue : '-'+ddayValue
+    
+    props.onInsert(text, content, ddayLast);
     closeModal();
     setText(text);
     // setContent(content);

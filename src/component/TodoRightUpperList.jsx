@@ -83,6 +83,15 @@ function TodoRightUpperList(props) {
     setAmendContent(e.target.value)
   };
   
+  // const Dday = (year, month, day) => {
+  //   const endDate = new Date(year, month-1, day);
+  //   const diffDate = endDate.getTime() - Today.getTime();
+  //   return Math.ceil(diffDate / (1000*60*60*24));
+  // };
+
+  // const Today = new Date();
+  // const dday = rightTodos[0].dayTime - Today.getTime();
+
   return (
     <TodoRightUpperListWrapper>
       <div className='upperDiv'>
@@ -98,7 +107,7 @@ function TodoRightUpperList(props) {
           onChange={handleChangeContent}
         />
         <StyledTime>
-          {'D-day: ' + rightTodos[0].dayTime}
+          {rightTodos && 'D-Day ' + rightTodos[0].dayTime}
         </StyledTime>
         {amendText && (<button className='amendButton' type="button" onClick={(e) => {
           e.preventDefault();

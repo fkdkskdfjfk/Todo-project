@@ -76,12 +76,6 @@ function App() {
   const handleAmend = (id, text, content) => {
     setTodos(todos.map(todo => todo.id === id ? { ...todo, text, content } : todo));
   };
-
-  // const Dday = (year, month, day) => {
-  //   const endDate = new Date(year, month-1, day);
-  //   const diffDate = endDate.getTime() - Today.getTime();
-  //   return Math.ceil(diffDate / (1000*60*60*24));
-  // };
   
   return (
     <>
