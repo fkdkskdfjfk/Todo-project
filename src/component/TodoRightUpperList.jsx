@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { FcCalendar } from "react-icons/fc";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const TodoRightUpperListWrapper = styled.div`
   min-height: 300px;
@@ -62,12 +65,21 @@ const StyledTime = styled.div`
   font-size: 1.125rem;
   line-height: 1.5;
   flex: 1;
+
+  .calendar {
+    font-size: 25px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;
 
 function TodoRightUpperList(props) {
   const { rightTodos, onAmend } = props;
   const [amendText, setAmendText] = useState('');
   const [amendContent, setAmendContent] = useState('');
+  const [onCalendar, setOnCalendar] = useState(false);
 
   useEffect(() => {
     setAmendText(amendText => rightTodos && rightTodos[0].text);
@@ -107,8 +119,8 @@ function TodoRightUpperList(props) {
           onChange={handleChangeContent}
         />
         <StyledTime>
-          {/* {rightTodos && rightTodos[0].dayTime} */}
           {(amendText || amendContent) && rightTodos[0].dayTime}
+          <FcCalendar className='calendar' onClick={() => {setOnCalendar(true)}}/>
         </StyledTime>
         {amendText && (<button className='amendButton' type="button" onClick={(e) => {
           e.preventDefault();
