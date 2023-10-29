@@ -107,7 +107,8 @@ function TodoRightUpperList(props) {
           onChange={handleChangeContent}
         />
         <StyledTime>
-          {rightTodos && 'D-Day ' + rightTodos[0].dayTime}
+          {/* {rightTodos && rightTodos[0].dayTime} */}
+          {(amendText || amendContent) && rightTodos[0].dayTime}
         </StyledTime>
         {amendText && (<button className='amendButton' type="button" onClick={(e) => {
           e.preventDefault();

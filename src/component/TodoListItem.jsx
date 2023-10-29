@@ -22,8 +22,14 @@ const CheckBox = styled.div`
     font-size: 1.5rem;
 
     /* 체크박스 체크되었을 때 보여줄 스타일 */
-    color: ${props => props.checked && '#22b8cf'};
+    color: ${props => props.checked && '#5d6c6e'};
   }
+`;
+
+const DdayBox = styled.div`
+  width: 60px;
+  font-weight: bold;
+  color: red;
 `;
 
 const Text = styled.div`
@@ -33,7 +39,7 @@ const Text = styled.div`
   /* 체크되었을 때 보여줄 스타일 */
   ${props => props.checked &&
     css`
-      color: #adb5bd;
+      color: #5d6c6e;
       text-decoration: line-through;
     `
   }
@@ -66,13 +72,14 @@ const Remove = styled.div`
 
 
 function TodoListItem(props) {
-  const { todo: {id, text, content, checked}, onRemove, onToggle, onView } = props;
+  const { todo: {id, text, content, checked, dayTime}, onRemove, onToggle, onView } = props;
   // console.log(onToggle);
   return (
     <TodoListItemWrapper>
       <CheckBox checked={checked} onClick={() => {onToggle(id)}}>
         { checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank /> }
       </CheckBox>
+      <DdayBox>{dayTime}</DdayBox>
       <Text checked={checked}>{text}</Text>
       <Amend onClick={() => { onView(id); }}>
         <HiPencil />
