@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { MdAdd, MdPostAdd } from "react-icons/md";
+import { MdPostAdd } from "react-icons/md";
 import InsertModal from './InsertModal';
 
 const TodoInsertWrapper = styled.form`
@@ -10,12 +10,6 @@ const TodoInsertWrapper = styled.form`
   align-items: flex-start;
   background: #495057;
   position: relative;
-`;
-
-const StyledDate = styled.div`
-  background: #788a9b;
-  /* display: flex;
-  flex: 1; */
 `;
 
 const StyledButton = styled.button`

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import TodoLeftList from './TodoLeftList';
 import TodoRightUpperList from './TodoRightUpperList';
+import TodoRightLowerList from './TodoRightLowerList';
 
 const TodoFrameWrapper = styled.div`
   width: 768px;
@@ -82,6 +83,7 @@ function TodoFrame(props) {
 
         <div className='rightContent'>
           <TodoRightUpperList rightTodos={rightTodos} onAmend={onAmend} />
+          <TodoRightLowerList todos={todos} onToggle={onToggle}/>
         </div>
       </div>   
     </TodoFrameWrapper>

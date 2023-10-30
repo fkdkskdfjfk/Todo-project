@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { MdClose } from 'react-icons/md';
 import styled from 'styled-components';
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
