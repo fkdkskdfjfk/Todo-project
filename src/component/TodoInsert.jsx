@@ -6,26 +6,11 @@ import InsertModal from './InsertModal';
 const TodoInsertWrapper = styled.form`
   height: 56px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-start;
   background: #495057;
-  /* position: relative; */
+  position: relative;
 `;
-
-// const StyledInput = styled.input`
-//   background: none;
-//   outline: none;
-//   border: none;
-//   padding: 0.5rem;
-//   font-size: 1.125rem;
-//   line-height: 1.5;
-//   color: white;
-//   flex: 1;
-
-//   &::placeholder {
-//     color: #dee2e6;
-//   }
-// `;
 
 const StyledDate = styled.div`
   background: #788a9b;

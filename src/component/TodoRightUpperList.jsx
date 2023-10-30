@@ -80,10 +80,12 @@ function TodoRightUpperList(props) {
   const [amendText, setAmendText] = useState('');
   const [amendContent, setAmendContent] = useState('');
   const [onCalendar, setOnCalendar] = useState(false);
+  const [dday, onChange] = useState(new Date());
 
   useEffect(() => {
-    setAmendText(amendText => rightTodos && rightTodos[0].text);
-    setAmendText(amendText => amendText);
+    // setAmendText(amendText => rightTodos && rightTodos[0].text);
+    // setAmendText(amendText => amendText);
+    setAmendText(rightTodos && rightTodos[0].text);
     setAmendContent(rightTodos && rightTodos[0].content);
   }, [ rightTodos ]);
 
@@ -95,14 +97,11 @@ function TodoRightUpperList(props) {
     setAmendContent(e.target.value)
   };
   
-  // const Dday = (year, month, day) => {
-  //   const endDate = new Date(year, month-1, day);
-  //   const diffDate = endDate.getTime() - Today.getTime();
-  //   return Math.ceil(diffDate / (1000*60*60*24));
-  // };
-
-  // const Today = new Date();
-  // const dday = rightTodos[0].dayTime - Today.getTime();
+  const today = new Date();
+  const diffTime = dday.getTime() - today.getTime();
+  const diffTimeAbs = Math.abs(dday.getTime() - today.getTime());
+  const ddayValue = Math.ceil(diffTimeAbs / (1000*60*60*24));
+  const ddayLast = (diffTime < 0) ? 'D+'+ddayValue : 'D-'+ddayValue
 
   return (
     <TodoRightUpperListWrapper>
@@ -120,11 +119,13 @@ function TodoRightUpperList(props) {
         />
         <StyledTime>
           {(amendText || amendContent) && rightTodos[0].dayTime}
-          <FcCalendar className='calendar' onClick={() => {setOnCalendar(true)}}/>
+          {(amendText || amendContent) && <FcCalendar className='calendar' onClick={() => {setOnCalendar(true)}}/>}
+          {onCalendar && <Calendar className="calendarStyle" onChange={onChange} value={dday} 
+            onClickDay={() => {setOnCalendar(false)}}/>}
         </StyledTime>
         {amendText && (<button className='amendButton' type="button" onClick={(e) => {
           e.preventDefault();
-          onAmend(rightTodos[0].id, amendText, amendContent)
+          onAmend(rightTodos[0].id, amendText, amendContent, ddayLast)
           setAmendText('');
           setAmendContent('');
         }}>

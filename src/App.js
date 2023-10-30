@@ -73,8 +73,8 @@ function App() {
     setRightTodos(todos.filter(todo => todo.id === id));
   };
 
-  const handleAmend = (id, text, content) => {
-    setTodos(todos.map(todo => todo.id === id ? { ...todo, text, content } : todo));
+  const handleAmend = (id, text, content, dayTime) => {
+    setTodos(todos.map(todo => todo.id === id ? { ...todo, text, content, dayTime } : todo));
   };
   
   return (

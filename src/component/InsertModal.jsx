@@ -14,8 +14,9 @@ const InsertModalWrapper = styled.div`
   z-index: 99;
   position: absolute;
   text-align: center;
+  top: 70%;
+  right: 200%;
   /* margin: 0 auto; */
-  cursor: default;
 
   .registButton, .closeButton {
     width: 5rem;
@@ -24,6 +25,7 @@ const InsertModalWrapper = styled.div`
     outline: none;
     border: none;
     cursor: pointer;
+    border-radius: 6px;
   }
   .registButton {
     right: 25%;
@@ -44,6 +46,7 @@ const StyledInput = styled.input`
   padding: 0.5rem;
   font-size: 1rem;
   line-height: 1.5;
+  border-radius: 6px;
   
   &::placeholder {
     color: #deeee6;
@@ -62,6 +65,7 @@ const StyledTextarea = styled.textarea`
   line-height: 1.5;
   resize: none;
   flex: 1;
+  border-radius: 6px;
 
   &::placeholder {
     color: #deeee6;
@@ -118,6 +122,7 @@ function InsertModal(props) {
     const ddayValue = Math.ceil(diffTimeAbs / (1000*60*60*24));
     const ddayLast = (diffTime < 0) ? 'D+'+ddayValue : 'D-'+ddayValue
     
+
     props.onInsert(text, content, ddayLast);
     closeModal();
     setText(text);
@@ -154,7 +159,6 @@ function InsertModal(props) {
             day: "numeric",
           })}
         </h3>
-        {console.log(dday.getTime())}
       </StyledCalendar>
       <button className='registButton' type="submit" onClick={handleSubmit}>
         등록
