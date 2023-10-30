@@ -121,7 +121,6 @@ function InsertModal(props) {
     const ddayValue = Math.ceil(diffTimeAbs / (1000*60*60*24));
     const ddayLast = (diffTime < 0) ? 'D+'+ddayValue : 'D-'+ddayValue
     
-
     props.onInsert(text, content, ddayLast);
     closeModal();
     setText(text);

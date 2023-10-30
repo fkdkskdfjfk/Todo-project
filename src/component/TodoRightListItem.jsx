@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 
 const TodoRightListItemWrapper = styled.div`
   padding: 1rem;
@@ -44,11 +45,15 @@ const Text = styled.div`
 `;
 
 function TodoRightListItem(props) {
-  const { todo: {id, text, checked, dayTime} } = props;
+  const { todo: {id, text, checked, dayTime}, onToggle } = props;
 
   return (
     <TodoRightListItemWrapper>
-
+      <CheckBox checked={checked} onClick={() => {onToggle(id)}}>
+        { checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank /> }
+      </CheckBox>
+      <DdayBox>{dayTime}</DdayBox>
+      <Text checked={checked}>{text}</Text>
     </TodoRightListItemWrapper>
   );
 }

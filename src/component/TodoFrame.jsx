@@ -59,6 +59,7 @@ const TodoFrameWrapper = styled.div`
     background: #cab7b7;
     width: 50%;
     border-left: 1px solid gray;
+    overflow-y: auto;
   }
 `;
 
