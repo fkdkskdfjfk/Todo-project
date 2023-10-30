@@ -9,8 +9,6 @@ const TodoFrameWrapper = styled.div`
   margin: 0 auto;
   margin-top: 6rem;
   border-radius: 10px;
-  /* overflow: hidden; */
-  /* position: relative; */
 
   .title {
     height: 4rem;
@@ -20,6 +18,7 @@ const TodoFrameWrapper = styled.div`
     align-items: center;
     font-size: 2rem;
     font-weight: bold;
+    border-radius: 10px 10px 0 0;
   }
   
   .contentFunc {

@@ -17,7 +17,6 @@ const TodoRightLowerListWrapper = styled.div`
   }
 `;
 
-
 function TodoRightLowerList(props) {
   const { todos, onToggle } = props;
   // let dayArray = [];
@@ -36,10 +35,7 @@ function TodoRightLowerList(props) {
   
   return (
     <TodoRightLowerListWrapper>
-      {/* {todos && todos.map((todo) => {dayArray.push(Number(todo.dayTime.split('D')[1]))})} */}
-
       <div className="subTitle">Priority</div>
-
       {todos && sortedTodos.map(todo => <TodoRightListItem key={todo.id} todo={todo} onToggle={onToggle} />)}
     </TodoRightLowerListWrapper>
   );
