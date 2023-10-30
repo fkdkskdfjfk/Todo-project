@@ -73,7 +73,6 @@ const Remove = styled.div`
 
 function TodoListItem(props) {
   const { todo: {id, text, content, checked, dayTime}, onRemove, onToggle, onView } = props;
-  // console.log(onToggle);
   return (
     <TodoListItemWrapper>
       <CheckBox checked={checked} onClick={() => {onToggle(id)}}>

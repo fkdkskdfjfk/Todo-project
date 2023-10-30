@@ -4,14 +4,11 @@ import TodoListItem from './TodoListItem';
 
 const TodoLeftListWrapper = styled.div`
   min-height: 600px;
-  /* max-height: 603px; */
   overflow-y: auto;
 `;
 
 function TodoLeftList(props) {
   const { todos, onRemove, onToggle, onView } = props;
-  // console.log(todos);
-  // console.log(todos[0]);
 
   return (
     <TodoLeftListWrapper>

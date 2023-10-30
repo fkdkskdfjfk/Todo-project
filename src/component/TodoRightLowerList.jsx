@@ -19,18 +19,20 @@ const TodoRightLowerListWrapper = styled.div`
 
 function TodoRightLowerList(props) {
   const { todos, onToggle } = props;
-  // let dayArray = [];
-  // {todos && dayArray = todos.map((todo) => {dayArray.push(todo.dayTime)})}
-  // console.log(dayArray);
-  // const negativeDday = todos.filter((todo) => {todo.dayTime < 0});
 
   const sortedTodos = [...todos].sort((a, b) => {
-    console.log(a);
-    console.log(Number(a.dayTime.split('D')[1]));
-    if (Number(a.dayTime.split('D')[1]) < 0 && (Number(b.dayTime.split('D')[1]) < 0)) {
-      if (Number(a.dayTime.split('D')[1]) < Number(b.dayTime.split('D')[1])) return 1;
-      if (Number(a.dayTime.split('D')[1]) > Number(b.dayTime.split('D')[1])) return -1;
-    } 
+    // console.log(a);
+    // console.log(Number(a.dayTime.split('D')[1]));
+    const numA = Number(a.dayTime.split('D')[1]);
+    const numB = Number(b.dayTime.split('D')[1]);
+    if ((numA < 0) && (numB < 0)) {
+      if (numA < numB) return 1;
+      if (numA > numB) return -1;
+    } else if (numA > 0 && numB < 0) {
+      return 1;
+    } else if (numA < 0 && numB > 0) {
+      return -1;
+    } else return 0;
   });
   
   return (

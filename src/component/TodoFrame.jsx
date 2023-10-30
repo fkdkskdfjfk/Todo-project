@@ -66,6 +66,7 @@ const TodoFrameWrapper = styled.div`
 
 function TodoFrame(props) {
   const { todos, onRemove, onToggle, onView, onAmend, rightTodos, children } = props;
+  console.log(todos);
   const [time, setTime] = useState(new Date());
 
   return (
@@ -74,7 +75,6 @@ function TodoFrame(props) {
       <div className='contentFunc'>
         <div className='styledDate'>
           {'오늘 날짜: '+time.toLocaleDateString()}
-          {console.log(time.getTime())}
         </div>
         <div className='inputTodo'>{children}</div>
       </div>
