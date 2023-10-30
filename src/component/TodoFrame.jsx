@@ -9,7 +9,7 @@ const TodoFrameWrapper = styled.div`
   margin: 0 auto;
   margin-top: 6rem;
   border-radius: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
   /* position: relative; */
 
   .title {
