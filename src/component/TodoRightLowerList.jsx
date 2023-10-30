@@ -21,8 +21,6 @@ function TodoRightLowerList(props) {
   const { todos, onToggle } = props;
 
   const sortedTodos = [...todos].sort((a, b) => {
-    // console.log(a);
-    // console.log(Number(a.dayTime.split('D')[1]));
     const numA = Number(a.dayTime.split('D')[1]);
     const numB = Number(b.dayTime.split('D')[1]);
     if ((numA < 0) && (numB < 0)) {
