@@ -28,9 +28,18 @@ const TodoFrameWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* position: relative; */
   }
   
+  .completedCount{
+    height: 56px;
+    background: #CE5A67;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+  }
+
   .styledDate {
     width: 300px;
     height: 56px;
@@ -66,15 +75,21 @@ const TodoFrameWrapper = styled.div`
   }
 `;
 
+
 function TodoFrame(props) {
   const { todos, onRemove, onToggle, onView, onAmend, rightTodos, children } = props;
   // console.log(todos);
   const [time, setTime] = useState(new Date());
 
+  const compliCount = todos.filter(todo => todo.checked);
+  console.log(compliCount);
   return (
     <TodoFrameWrapper>
       <div className='title'>일정 관리 앱</div>
       <div className='contentFunc'>
+        <div className='completedCount'>
+          {'완료한 개수: ' + (todos && compliCount.length)}
+        </div>
         <div className='styledDate'>
           {'오늘 날짜: '+time.toLocaleDateString()}
         </div>
