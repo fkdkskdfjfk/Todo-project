@@ -10,10 +10,17 @@ const TodoRightLowerListWrapper = styled.div`
   }
 
   .subTitle {
+    width: 367px;
     padding: 0.5rem;
     font-size: 1.5rem;
     font-weight: bold;
     border-bottom: 1px solid #d82b2bbc;
+    position: absolute;
+    background: #F4bf96;
+  }
+
+  .base {
+    margin-top: 40.5px;
   }
 `;
 
@@ -36,7 +43,9 @@ function TodoRightLowerList(props) {
   return (
     <TodoRightLowerListWrapper>
       <div className="subTitle">Priority</div>
-      {todos && sortedTodos.map(todo => <TodoRightListItem key={todo.id} todo={todo} onToggle={onToggle} />)}
+      <div className="base">
+        {todos && sortedTodos.map(todo => <TodoRightListItem key={todo.id} todo={todo} onToggle={onToggle} />)}
+      </div>
     </TodoRightLowerListWrapper>
   );
 }
