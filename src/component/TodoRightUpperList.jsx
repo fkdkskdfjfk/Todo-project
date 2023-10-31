@@ -12,7 +12,7 @@ const TodoRightUpperListWrapper = styled.div`
 
   .upperDiv {
     border-bottom: 1px solid #dee2e6;
-    background: #929291;
+    background: #F4BF96;
     height: 28px;
     padding: 14px;
     display: flex;
@@ -120,7 +120,7 @@ function TodoRightUpperList(props) {
           {(amendText || amendContent) && rightTodos[0].dayTime}
           {(amendText || amendContent) && <FcCalendar className='calendar' onClick={() => {setOnCalendar(true)}}/>}
           {onCalendar && <Calendar className="calendarStyle" onChange={onChange} value={dday} 
-            onClickDay={() => {setOnCalendar(false)}} />}
+            onClickDay={() => {setOnCalendar(false)}} defaultValue={{Date: new Date()}}/>}
         </StyledTime>
         {amendText && (<button className='amendButton' type="button" onClick={(e) => {
           e.preventDefault();

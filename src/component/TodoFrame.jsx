@@ -13,13 +13,14 @@ const TodoFrameWrapper = styled.div`
 
   .title {
     height: 4rem;
-    background: #22b8cf;
+    background: #1F1717;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
     font-weight: bold;
     border-radius: 10px 10px 0 0;
+    color: white;
   }
   
   .contentFunc {
@@ -33,7 +34,7 @@ const TodoFrameWrapper = styled.div`
   .styledDate {
     width: 300px;
     height: 56px;
-    background: #788a9b;
+    background: #CE5A67;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,13 +52,13 @@ const TodoFrameWrapper = styled.div`
   }
 
   .leftContent {
-    background: #cab7b7;
+    background: #F4BF96;
     width: 50%;
     border-radius: 0 0 0 10px;
   }
 
   .rightContent {
-    background: #cab7b7;
+    background: #F4BF96;
     width: 50%;
     border-left: 1px solid gray;
     overflow-y: auto;
