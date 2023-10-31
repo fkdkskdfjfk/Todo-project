@@ -8,9 +8,10 @@ import { v4 as uuidv4 } from "uuid";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
-
   /* 글로벌 스타일 */
-
+  body {
+    background: #FCF5ED;
+  }
 `;
 
 

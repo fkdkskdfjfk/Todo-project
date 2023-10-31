@@ -21,7 +21,8 @@ function TodoLeftLowerList(props) {
   return (
     <TodoLeftLowerListWrapper>
       <div className="leftLowerTitle">Completed</div>
-      {todos && todos.map((todo) => todo.checked && <TodoRightListItem key={todo.id} todo={todo} onToggle={onToggle} />)}
+      {/* {todos && todos.map((todo) => todo.checked && <TodoRightListItem key={todo.id} todo={todo} onToggle={onToggle} />)} */}
+      {todos && todos.filter(todo => todo.checked).map(todo => <TodoRightListItem key={todo.id} todo={todo} onToggle={onToggle} />)}
     </TodoLeftLowerListWrapper>
   );
 }
