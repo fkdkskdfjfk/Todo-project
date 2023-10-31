@@ -13,7 +13,7 @@ const TodoRightUpperListWrapper = styled.div`
   .upperDiv {
     border-bottom: 1px solid #dee2e6;
     background: #929291;
-    
+    height: 28px;
     padding: 14px;
     display: flex;
     align-items: center;
@@ -42,7 +42,6 @@ const StyledInput = styled.input`
   font-size: 1.125rem;
   line-height: 1.5;
   flex: 1;
-  cursor: text;
 `;
 
 const StyledTextarea = styled.textarea`
@@ -106,22 +105,22 @@ function TodoRightUpperList(props) {
   return (
     <TodoRightUpperListWrapper>
       <div className='upperDiv'>
-        <StyledInput 
+        {rightTodos && <StyledInput 
           type='text'
           value={amendText}
           onChange={handleChangeText} 
-        />
+        />}
       </div>
       <div className='lowerDiv'>
-        <StyledTextarea
+      {rightTodos && <StyledTextarea
           value={amendContent} 
           onChange={handleChangeContent}
-        />
+        />}
         <StyledTime>
           {(amendText || amendContent) && rightTodos[0].dayTime}
           {(amendText || amendContent) && <FcCalendar className='calendar' onClick={() => {setOnCalendar(true)}}/>}
           {onCalendar && <Calendar className="calendarStyle" onChange={onChange} value={dday} 
-            onClickDay={() => {setOnCalendar(false)}}/>}
+            onClickDay={() => {setOnCalendar(false)}} />}
         </StyledTime>
         {amendText && (<button className='amendButton' type="button" onClick={(e) => {
           e.preventDefault();
