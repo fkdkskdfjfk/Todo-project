@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import TodoListItem from './TodoListItem';
 
 const TodoLeftListWrapper = styled.div`
-  min-height: 600px;
+  height: 300px;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 function TodoLeftList(props) {
@@ -12,7 +15,7 @@ function TodoLeftList(props) {
 
   return (
     <TodoLeftListWrapper>
-      {todos && todos.map(todo => <TodoListItem key={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle} onView={onView}/>)}
+      {todos && todos.map(todo => !todo.checked && <TodoListItem key={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle} onView={onView}/>)}
     </TodoLeftListWrapper>
   );
 }

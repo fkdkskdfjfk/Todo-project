@@ -3,6 +3,7 @@ import styled from "styled-components";
 import TodoLeftList from './TodoLeftList';
 import TodoRightUpperList from './TodoRightUpperList';
 import TodoRightLowerList from './TodoRightLowerList';
+import TodoLeftLowerList from './TodoLeftLowerList';
 
 const TodoFrameWrapper = styled.div`
   width: 768px;
@@ -66,7 +67,7 @@ const TodoFrameWrapper = styled.div`
 
 function TodoFrame(props) {
   const { todos, onRemove, onToggle, onView, onAmend, rightTodos, children } = props;
-  console.log(todos);
+  // console.log(todos);
   const [time, setTime] = useState(new Date());
 
   return (
@@ -81,6 +82,7 @@ function TodoFrame(props) {
       <div className='content'>
         <div className='leftContent'>
           <TodoLeftList todos={todos} onRemove={onRemove} onToggle={onToggle} onView={onView}/>
+          <TodoLeftLowerList todos={todos} onToggle={onToggle} />
         </div>
 
         <div className='rightContent'>
